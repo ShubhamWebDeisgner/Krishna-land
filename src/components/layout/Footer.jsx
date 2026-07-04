@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const QUICK_LINKS = [
   { label: "About Us", href: "/about" },
-  { label: "Navagam Project", href: "/projects/navagam" },
+  { label: "Navagam ", href: "/projects/navagam" },
   { label: "Kasindra", href: "/projects/kasindra" },
   { label: "Dholera", href: "#" },
 ];
@@ -51,7 +51,7 @@ export default function Footer() {
                 width={250}
                 height={250}
                 alt="company-logo"
-                className="w-auto h-[36px] sm:h-[42px] lg:h-[48px] object-contain"
+                className="w-auto h-[36px] sm:h-[42px] lg:h-[100px] object-contain"
                 priority
               />
             </Link>

@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ContactQueryModal from "./ContactQueryModal";
 import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
   {
     label: "Projects",
-    href: "#",
     hasDropdown: true,
     dropdownItems: [
       { label: "Kasindra Projects", href: "/projects/kasindra" },
@@ -49,6 +48,9 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const navRef = useRef(null);
+  const dropdownCloseTimer = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -63,36 +65,16 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // Auto Open Logic
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const hasShown = sessionStorage.getItem("contact-modal-shown");
-    if (hasShown) return;
-
-    let timer;
-
-    const showModal = () => {
-      setIsContactModalOpen(true);
-      sessionStorage.setItem("contact-modal-shown", "true");
-      cleanup();
-    };
-
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        showModal();
+    const handleClickOutside = event => {
+      if (!navRef.current) return;
+      if (!navRef.current.contains(event.target)) {
+        setOpenDropdown(false);
       }
     };
 
-    const cleanup = () => {
-      if (timer) clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-
-    timer = setTimeout(showModal, 3000);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return cleanup;
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
   return (
     <>
@@ -117,50 +99,59 @@ export default function Header() {
               width={350}
               height={350}
               alt="company-logo"
-              className="w-auto h-[32px] sm:h-[36px] lg:h-[40px] object-contain"
+              className="w-auto h-[40px] sm:h-[36px] lg:h-[80px] object-contain"
               priority
             />
           </Link>
 
           {/* ── Desktop Nav ──────────────────────────────── */}
-          <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 xl:gap-10">
+          <nav
+            ref={navRef}
+            aria-label="Primary"
+            className="hidden lg:flex items-center gap-8 xl:gap-10"
+          >
             {NAV_LINKS.map(({ label, href, hasDropdown, dropdownItems }) => {
-              const isActive = activeLink === href;
-              const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+              const isDropdownOpen = openDropdown === label;
+              const isActive =
+                activeLink === href ||
+                dropdownItems?.some(item => item.href === activeLink) ||
+                isDropdownOpen;
 
-              return (
-                <div
-                  key={label}
-                  className="relative group"
-                  onMouseEnter={() => hasDropdown && setIsDropdownOpen(true)}
-                  onMouseLeave={() => hasDropdown && setIsDropdownOpen(false)}
-                >
-                  <Link
-                    href={href}
-                    onClick={() => setActiveLink(href)}
-                    className={[
-                      "group relative flex items-center gap-1",
-                      "font-sans text-[16px] font-medium",
-                      "transition-all duration-200",
-                      isActive ? "text-[#171717]" : "text-[#525252] hover:text-[#171717]",
-                      "py-1",
-                    ].join(" ")}
+              if (hasDropdown && dropdownItems) {
+                return (
+                  <div
+                    key={label}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (dropdownCloseTimer.current) {
+                        clearTimeout(dropdownCloseTimer.current);
+                        dropdownCloseTimer.current = null;
+                      }
+                      setOpenDropdown(label);
+                    }}
+                    onMouseLeave={() => {
+                      dropdownCloseTimer.current = setTimeout(() => {
+                        setOpenDropdown(false);
+                      }, 200);
+                    }}
                   >
-                    {label}
-                    {hasDropdown && <ChevronDown />}
-
-                    {/* Active Indicator - Bottom Line */}
-                    <span
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOpenDropdown(prev => (prev === label ? false : label));
+                      }}
                       className={[
-                        "absolute -bottom-[2px] left-0 h-[2px] rounded-full",
-                        "bg-[#171717] transition-all duration-300",
-                        isActive ? "w-full" : "w-0 group-hover:w-full",
+                        "group flex items-center gap-1",
+                        "font-sans text-[16px] !font-medium",
+                        "transition-colors duration-200",
+                        isActive ? "text-[#171717]" : "text-[#171717] hover:text-[#171717]",
+                        "py-1",
                       ].join(" ")}
-                    />
-                  </Link>
+                    >
+                      <span>{label}</span>
+                      <ChevronDown />
+                    </button>
 
-                  {/* Dropdown Menu */}
-                  {hasDropdown && dropdownItems && (
                     <div
                       className={[
                         "absolute top-full left-0 mt-2 min-w-[220px]",
@@ -179,7 +170,7 @@ export default function Header() {
                           href={item.href}
                           onClick={() => {
                             setActiveLink(item.href);
-                            setIsDropdownOpen(false);
+                            setOpenDropdown(false);
                           }}
                           className={[
                             "block w-full text-left px-4 py-2.5",
@@ -192,8 +183,25 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
-                  )}
-                </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={() => setActiveLink(href)}
+                  className={[
+                    "group flex items-center gap-1",
+                    "font-sans text-[16px] font-medium",
+                    "transition-colors duration-200",
+                    isActive ? "text-[#171717]" : "text-[#525252] hover:text-[#171717]",
+                    "py-1",
+                  ].join(" ")}
+                >
+                  <span>{label}</span>
+                </Link>
               );
             })}
           </nav>
