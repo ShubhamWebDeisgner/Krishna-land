@@ -63,7 +63,7 @@ export default function OngoingProjectsSection() {
           </h2>
         </div>
         <Link
-          href="/projects"
+          href="/projects/navagam"
           className="inline-flex items-center justify-center h-10 px-6 rounded-full border border-[#e5e5e5] bg-white text-[#171717] font-sans text-[14px] font-medium hover:bg-[#f5f5f5] hover:border-[#d0d0d0] transition-all duration-200 whitespace-nowrap md:self-end self-start"
         >
           View All Projects

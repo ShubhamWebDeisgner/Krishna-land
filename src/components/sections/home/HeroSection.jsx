@@ -305,7 +305,7 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 flex-wrap mt-1"
           >
             <Link
-              href="/projects"
+              href="#"
               className="group inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-5 sm:px-7 rounded-full bg-white text-[#171717] font-sans text-[13px] sm:text-[14px] font-medium leading-none shadow-[0px_4px_12px_rgba(255,255,255,0.15)] hover:shadow-[0px_8px_24px_rgba(255,255,255,0.20)] hover:bg-[#f5f5f5] active:scale-[0.98] transition-all duration-200 whitespace-nowrap"
             >
               Explore Communities
@@ -313,7 +313,7 @@ export default function HeroSection() {
             </Link>
 
             <Link
-              href="/properties"
+              href="#"
               className="inline-flex items-center justify-center h-10 sm:h-11 px-5 sm:px-7 rounded-full border border-white/20 bg-white/5 !text-white font-sans text-[13px] sm:text-[14px] font-medium leading-none backdrop-blur-[4px] hover:bg-white/15 hover:border-white/30 transition-all duration-200 whitespace-nowrap"
             >
               View Properties

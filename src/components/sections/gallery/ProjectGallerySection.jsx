@@ -97,7 +97,7 @@ export default function ProjectGallerySection() {
           </h2>
         </div>
         <Link
-          href="/gallery"
+          href="#"
           className="group inline-flex items-center justify-center gap-2 h-10 px-5 sm:px-6 rounded-full border border-[#e5e5e5] bg-white text-[#171717] font-semibold text-[13px] font-semibold hover:bg-[#f5f5f5] hover:border-[#d0d0d0] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] active:scale-[0.97] transition-all duration-200 whitespace-nowrap shrink-0 md:self-end self-start"
         >
           View Full Gallery
