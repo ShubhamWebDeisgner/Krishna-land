@@ -1,137 +1,12 @@
-// import { Mail, MapPin, Phone } from "lucide-react";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// const QUICK_LINKS = [
-//   { label: "About Us", href: "/about" },
-//   { label: "Ongoing Projects", href: "/projects" },
-//   { label: "Available Plots", href: "/properties" },
-//   { label: "Investment", href: "/investments" },
-// ];
-
-// const CONTACT_ITEMS = [
-//   {
-//     icon: Mail,
-//     text: "hello@krishnaland.com",
-//     href: "mailto:hello@krishnaland.com",
-//   },
-//   {
-//     icon: MapPin,
-//     text: "1140 Business Avenue, Suite 12",
-//   },
-//   {
-//     icon: Phone,
-//     text: "+1 (555) 014-2024",
-//     href: "tel:+15550142024",
-//   },
-// ];
-
-// function FooterHeading({ children }) {
-//   return (
-//     <h2 className="font-sans text-[12px] font-semibold leading-5 tracking-[6px] uppercase text-white/70">
-//       {children}
-//     </h2>
-//   );
-// }
-
-// export default function Footer() {
-//   return (
-//     <footer
-//       aria-label="Site footer"
-//       className="w-full border-t border-[var(--color-ink-200)] bg-[var(--color-ink-900)]"
-//     >
-//       <div className="mx-auto w-full max-w-[1440px] px-6 py-8 sm:px-8 lg:py-[34px]">
-//         <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-0">
-//           <div className="sm:col-span-2 lg:col-span-5">
-//             <Link
-//               href="/"
-//               aria-label="Krishna land home"
-//               className="inline-flex items-center gap-3"
-//             >
-//               {/* <span className="flex size-9 shrink-0 items-center justify-center rounded-[14px] bg-white/10 text-white ring-1 ring-white/[0.04]">
-//                 <Building2 size={18} strokeWidth={1.7} aria-hidden="true" />
-//               </span> */}
-
-//               <span className="flex min-w-0 flex-col">
-//                 {/* <span className="font-serif text-[18px] font-semibold leading-[22px] text-[var(--color-ink-50)]">
-//                   Krishna land
-//                 </span>
-//                 <span className="font-sans text-[13px] font-normal leading-[18px] text-white/60">
-//                   Land Development
-//                 </span> */}
-//                 <Image src="/images/hero/logo.png" width={280} height={280} alt="company-logo" />
-//               </span>
-//             </Link>
-
-//             <p className="mt-4 max-w-[390px] font-sans text-[13px] font-normal leading-[27px] text-white/70 sm:text-[14px]">
-//               Creating premium communities and investment-ready properties with a modern,
-//               transparent, and design-led approach.
-//             </p>
-//           </div>
-
-//           <div className="lg:col-span-3 lg:col-start-6">
-//             <FooterHeading>Quick Links</FooterHeading>
-
-//             <nav aria-label="Footer quick links" className="mt-3 flex flex-col gap-3">
-//               {QUICK_LINKS.map(({ label, href }) => (
-//                 <Link
-//                   key={label}
-//                   href={href}
-//                   className="w-fit font-sans text-[14px] font-normal leading-5 !text-white transition-colors duration-150 hover:text-white sm:text-[14px]"
-//                 >
-//                   {label}
-//                 </Link>
-//               ))}
-//             </nav>
-//           </div>
-
-//           <div className="lg:col-span-4">
-//             <FooterHeading>Contact</FooterHeading>
-
-//             <div className="mt-3 flex flex-col gap-3">
-//               {CONTACT_ITEMS.map(({ icon: Icon, text, href }) => {
-//                 const className =
-//                   "flex min-w-0 items-center gap-2.5 font-sans text-[14px] font-normal leading-5 !text-white transition-colors duration-150 sm:text-[14px]";
-
-//                 const content = (
-//                   <>
-//                     <Icon
-//                       size={16}
-//                       strokeWidth={1.8}
-//                       aria-hidden="true"
-//                       className="shrink-0 text-white/70"
-//                     />
-//                     <span className="min-w-0 break-words">{text}</span>
-//                   </>
-//                 );
-
-//                 return href ? (
-//                   <a key={text} href={href} className={`${className} hover:text-white`}>
-//                     {content}
-//                   </a>
-//                 ) : (
-//                   <div key={text} className={className}>
-//                     {content}
-//                   </div>
-//                 );
-//               })}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const QUICK_LINKS = [
   { label: "About Us", href: "/about" },
-  { label: "Ongoing Projects", href: "/projects" },
-  { label: "Available Plots", href: "/properties" },
-  { label: "Investment", href: "/investments" },
+  { label: "Navagam Project", href: "/projects/navagam" },
+  { label: "Kasindra", href: "/projects/kasindra" },
+  { label: "Dholera", href: "#" },
 ];
 
 const CONTACT_ITEMS = [
@@ -176,7 +51,7 @@ export default function Footer() {
                 width={250}
                 height={250}
                 alt="company-logo"
-                className="w-auto h-auto max-h-[48px] sm:max-h-[52px] lg:max-h-[56px] object-contain"
+                className="w-auto h-[36px] sm:h-[42px] lg:h-[48px] object-contain"
                 priority
               />
             </Link>

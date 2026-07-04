@@ -12,15 +12,15 @@ const NAV_LINKS = [
     href: "#",
     hasDropdown: true,
     dropdownItems: [
-      { label: "Kasindra Projects", href: "/projects/ongoing" },
-      { label: "Navagam Projects", href: "/projects/completed" },
+      { label: "Kasindra Projects", href: "/projects/kasindra" },
+      { label: "Navagam Projects", href: "/projects/navagam" },
     ],
   },
   { label: "About Us", href: "/about" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Dholera", href: "/dholera" },
-  { label: "Bulk Land", href: "/bulk-land" },
-  { label: "Services", href: "/services" },
+  { label: "Gallery", href: "#" },
+  { label: "Dholera", href: "#" },
+  { label: "Bulk Land", href: "#" },
+  { label: "Services", href: "#" },
 ];
 
 function ChevronDown() {
@@ -117,7 +117,7 @@ export default function Header() {
               width={350}
               height={350}
               alt="company-logo"
-              className="w-auto h-auto max-h-[40px] sm:max-h-[44px] lg:max-h-[48px] object-fill"
+              className="w-auto h-[32px] sm:h-[36px] lg:h-[40px] object-contain"
               priority
             />
           </Link>

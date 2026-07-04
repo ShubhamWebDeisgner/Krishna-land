@@ -55,13 +55,13 @@ export default function KasindraPage() {
       {/* 4. Floor Plans Section */}
       <ProjectFloorPlans
         title="Floor Plans & Site Maps"
-        subtitle="Choose from our range of master-planned space configurations."
+        subtitle="Browse all six floor plans. Click View Site Plan to open the full PDF."
       />
 
       {/* 5. Legacy Gallery */}
       <ProjectGallery
         title="Aurum Valley Legacy Gallery"
-        subtitle="A visual walk through premium design and master planning."
+        subtitle="A visual journey through Roman grandeur meets smart city living."
       />
 
       {/* 6. Location Advantages */}

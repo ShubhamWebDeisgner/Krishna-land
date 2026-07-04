@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 
 const linkVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -17,6 +18,8 @@ const linkVariants = {
 };
 
 export default function MobileMenu({ id, isOpen, links = [], onClose }) {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -67,68 +70,94 @@ export default function MobileMenu({ id, isOpen, links = [], onClose }) {
               overflowY: "auto",
             }}
           >
-            {/* Close button */}
-            {/* <button
-              onClick={onClose}
-              className="self-end w-10 h-10 rounded-full hover:bg-[#f5f5f5] transition-colors duration-200 flex items-center justify-center mb-2"
-              aria-label="Close menu"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 5L5 15M5 5L15 15"
-                  stroke="#171717"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button> */}
-
             {/* Navigation Links */}
             <div className="flex flex-col gap-1">
-              {links.map(({ label, href, hasDropdown }, index) => (
-                <motion.div
-                  key={label}
-                  custom={index}
-                  initial="hidden"
-                  animate="show"
-                  exit={{ opacity: 0, x: -20 }}
-                  variants={linkVariants}
-                >
-                  <Link
-                    href={href}
-                    onClick={onClose}
-                    className="group flex items-center justify-between py-4 px-1 rounded-lg hover:bg-[#f5f5f5] transition-all duration-200"
-                  >
-                    <span className="font-sans text-[17px] font-medium text-[#171717]">
-                      {label}
-                    </span>
-                    {hasDropdown && (
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        className="text-[#737373] group-hover:translate-x-1 transition-transform duration-200"
+              {links.map(({ label, href, hasDropdown, dropdownItems }, index) => {
+                if (hasDropdown && dropdownItems) {
+                  const isOpenDropdown = openDropdown === label;
+
+                  return (
+                    <motion.div
+                      key={label}
+                      custom={index}
+                      initial="hidden"
+                      animate="show"
+                      exit={{ opacity: 0, x: -20 }}
+                      variants={linkVariants}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenDropdown(isOpenDropdown ? null : label)}
+                        className="group w-full flex items-center justify-between py-4 px-1 rounded-lg hover:bg-[#f5f5f5] transition-all duration-200"
                       >
-                        <path
-                          d="M6 4L10 8L6 12"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
-                  </Link>
-                </motion.div>
-              ))}
+                        <span className="font-sans text-[17px] font-medium text-[#171717]">
+                          {label}
+                        </span>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className={`text-[#737373] transition-transform duration-200 ${
+                            isOpenDropdown ? "rotate-90" : "rotate-0"
+                          }`}
+                        >
+                          <path
+                            d="M6 4L10 8L6 12"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+
+                      <div
+                        className={`overflow-hidden transition-[max-height,opacity] duration-300 ${
+                          isOpenDropdown ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <div className="flex flex-col gap-1 px-1 pb-2">
+                          {dropdownItems.map(item => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              onClick={() => {
+                                onClose();
+                                setOpenDropdown(null);
+                              }}
+                              className="block rounded-lg px-4 py-3 font-sans text-[15px] text-[#171717] hover:bg-[#f5f5f5] transition-all duration-200"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                }
+
+                return (
+                  <motion.div
+                    key={label}
+                    custom={index}
+                    initial="hidden"
+                    animate="show"
+                    exit={{ opacity: 0, x: -20 }}
+                    variants={linkVariants}
+                  >
+                    <Link
+                      href={href}
+                      onClick={onClose}
+                      className="group flex items-center justify-between py-4 px-1 rounded-lg hover:bg-[#f5f5f5] transition-all duration-200"
+                    >
+                      <span className="font-sans text-[17px] font-medium text-[#171717]">
+                        {label}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Divider */}

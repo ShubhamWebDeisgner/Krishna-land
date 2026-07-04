@@ -1,6 +1,5 @@
 "use client";
 
-import Badge from "@/components/ui/Badge";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -8,31 +7,63 @@ import { useEffect, useState } from "react";
 const defaultPlans = [
   {
     id: "plan-1",
+    index: "01",
     tag: "2 BHK Villa",
-    title: "2 BHK GP Plan 01",
-    description: "Three-decade master planned layout configurations designed for maximum airflow, natural sunlight, and luxury space optimization.",
-    image: "/gallery1.png",
+    floor: "Ground Floor",
+    title: "2 BHK GF Plan (1)",
+    description:
+      "Spacious 2 bedroom ground floor layout with open living area and dedicated parking space.",
+    image: "/2BHKGF_PLAN.jpg",
   },
   {
     id: "plan-2",
-    tag: "3 BHK Villa",
-    title: "2 BHK GP Plan",
-    description: "Customized floor structures matching contemporary aesthetics. Renders wide interior spaces, balconies, and premium setups.",
-    image: "/gallery2.png",
+    index: "02",
+    tag: "2 BHK Villa",
+    floor: "Ground Floor",
+    title: "2 BHK GF Plan",
+    description:
+      "Optimised 2 bedroom ground floor unit with Roman-arched entrance and east-facing balcony.",
+    image: "/2BHKGF_PLAN2.jpg",
   },
   {
     id: "plan-3",
-    tag: "4 BHK Villa",
-    title: "3 BHK GP Plan",
-    description: "Premium double-story villa configurations built to deliver comfort, privacy, and expansive living lounges.",
-    image: "/gallery3.png",
+    index: "03",
+    tag: "3 BHK Villa",
+    floor: "First Floor",
+    title: "3 BHK FF Plan",
+    description:
+      "Premium 3 bedroom first floor plan with panoramic terrace access and dual bathroom layout.",
+    image: "/3BHKFF_plan.jpg",
   },
   {
     id: "plan-4",
+    index: "04",
+    tag: "3 BHK Villa",
+    floor: "First Floor",
+    title: "3 BHK FF Plan (2)",
+    description:
+      "Spacious 3 bedroom first floor configurations featuring modern layout with large balcony.",
+    image: "/3BHKGFPLAN.jpg",
+  },
+  {
+    id: "plan-5",
+    index: "05",
+    tag: "4 BHK Villa",
+    floor: "Second Floor",
+    title: "4 BHK SF Plan",
+    description:
+      "Luxurious 4 bedroom double-story villa configurations built to deliver comfort, privacy.",
+    image: "/CLUBHOUSEFF.jpg",
+  },
+  {
+    id: "plan-6",
+    index: "06",
     tag: "Premium Plot",
-    title: "Standard Plot Plan",
-    description: "Meticulously demarcated premium residential plot configurations with complete service infrastructure ready.",
-    image: "/gallery4.png",
+    floor: "Penthouse",
+    title: "Penthouse Plan",
+    description:
+      "Meticulously designed penthouse layout configuration with private terrace gardens.",
+    image: "/CLUBHOUSEGF.jpg",
   },
 ];
 
@@ -43,6 +74,8 @@ export default function ProjectFloorPlans({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [activeOverlayId, setActiveOverlayId] = useState(null);
 
   // Responsive visible items detection
   useEffect(() => {
@@ -69,12 +102,24 @@ export default function ProjectFloorPlans({
     }
   }, [visibleCount, maxIndex, currentIndex]);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedPlan) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedPlan]);
+
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(0, prev - 1));
+    setCurrentIndex(prev => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
 
   return (
@@ -83,42 +128,63 @@ export default function ProjectFloorPlans({
       aria-labelledby="floorplans-heading"
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10 sm:gap-12 relative">
-        {/* Header and Indicator Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="flex flex-col gap-3">
-            <Badge label="Layout Maps" />
-            <h2
-              id="floorplans-heading"
-              className="font-serif text-[32px] sm:text-[38px] md:text-[44px] font-semibold text-[#2c578b] tracking-[-1px]"
-            >
-              {title}
-            </h2>
-            <p className="font-sans text-[14px] sm:text-[15px] font-light text-[#525252]">
-              {subtitle}
-            </p>
+        {/* Centered Header Section */}
+        <div className="w-full flex flex-col items-center text-center gap-4 max-w-2xl mx-auto mb-4">
+          {/* Custom Centered Badge */}
+          <div className="inline-flex items-center bg-white border border-[#eaeaea] rounded-full px-4 py-2 font-sans font-semibold text-[11px] leading-none tracking-[4px] uppercase text-[#0B2545] whitespace-nowrap self-center shadow-sm select-none">
+            SITE PLANS
           </div>
+          <h2
+            id="floorplans-heading"
+            className="font-serif text-[32px] sm:text-[38px] md:text-[44px] font-semibold text-[#2c578b] tracking-[-1px] leading-tight"
+          >
+            {title}
+          </h2>
+          <p className="font-sans text-[14px] sm:text-[15px] font-light text-[#525252] leading-relaxed">
+            {subtitle}
+          </p>
 
-          {/* Top-Right Index Indicator */}
-          <div className="font-sans text-[13px] font-medium text-[#737373] self-start md:self-end bg-[#f5f5f5] px-4 py-1.5 rounded-full border border-[#e5e5e5]">
-            <span className="text-[#171717]">{currentIndex + 1}</span> of{" "}
-            <span className="text-[#171717]">{plans.length}</span> — plans available
-          </div>
+          {/* Centered Slide Dots */}
+          {maxIndex > 0 && (
+            <div className="flex items-center justify-center gap-2 mt-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`transition-all duration-300 rounded-full ${
+                    currentIndex === idx
+                      ? "w-8 h-2 bg-[#0B2545]"
+                      : "w-2 h-2 bg-[#e5e5e5] hover:bg-[#c0c0c0]"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Slider Carousel Window with absolute arrows */}
-        <div className="relative w-full px-1.5 sm:px-12">
+        <div className="relative w-full px-12 sm:px-14 md:px-16">
           {/* Navigation Left Arrow */}
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-[#e5e5e5] bg-white flex items-center justify-center shadow-md active:scale-95 transition-all duration-200 ${
+            className={`absolute left-1 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center shadow-md active:scale-95 transition-all duration-200 ${
               currentIndex === 0
-                ? "opacity-40 cursor-not-allowed text-gray-300"
-                : "opacity-100 hover:border-[#171717] text-[#171717]"
+                ? "opacity-30 cursor-not-allowed text-gray-300"
+                : "opacity-100 hover:border-gray-400 text-gray-700 hover:shadow-lg"
             }`}
             aria-label="Previous slide"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="sm:w-5 sm:h-5"
+            >
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
@@ -128,49 +194,82 @@ export default function ProjectFloorPlans({
             <div
               className="flex gap-6 transition-transform duration-500 ease-out"
               style={{
-                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+                transform: `translateX(-${currentIndex * (100 / plans.length)}%)`,
                 width: `${(plans.length / visibleCount) * 100}%`,
               }}
             >
-              {plans.map((item) => (
+              {plans.map(item => (
                 <div
                   key={item.id}
-                  className="bg-white border border-[#e5e5e5] rounded-[24px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-shadow duration-300 flex flex-col justify-between"
+                  className="bg-white border border-[#e5e5e5] rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between"
                   style={{
                     width: `calc(${100 / plans.length}% - ${(6 * (plans.length - 1)) / plans.length}px)`,
                   }}
                 >
                   {/* Card Image Area */}
-                  <div className="relative w-full aspect-[4/3] bg-[#fcfcfc] border-b border-[#f0f0f0]">
+                  <div
+                    className="relative w-full aspect-[4/3] bg-[#fcfcfc] border-b border-[#f0f0f0] overflow-hidden group cursor-pointer"
+                    onClick={() => setActiveOverlayId(activeOverlayId === item.id ? null : item.id)}
+                  >
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
                     />
-                    <div className="absolute top-4 left-4 bg-[#0B2545] text-white text-[10px] font-semibold tracking-[1px] uppercase px-3 py-1 rounded-full">
-                      {item.tag}
+
+                    {/* Floating Badges */}
+                    {/* Index Badge */}
+                    <div className="absolute top-4 left-4 bg-black/85 backdrop-blur-[2px] text-white text-[12px] font-sans font-bold w-9 h-9 flex items-center justify-center rounded-[8px] tracking-wide shadow-sm select-none z-20">
+                      {item.index}
+                    </div>
+
+                    {/* Floor Badge */}
+                    <div className="absolute top-4 right-4 bg-white text-[#525252] text-[11px] font-sans font-semibold px-4 py-1.5 rounded-full border border-gray-100 shadow-sm uppercase tracking-[0.5px] select-none z-20">
+                      {item.floor}
+                    </div>
+
+                    {/* Interactive overlay (CTA on hover/click) */}
+                    <div
+                      className={`absolute inset-0 bg-[#0B2545]/65 backdrop-blur-[3px] flex items-center justify-center transition-all duration-300 z-10 ${
+                        activeOverlayId === item.id
+                          ? "opacity-100 pointer-events-auto"
+                          : "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                      }`}
+                      onClick={e => {
+                        e.stopPropagation();
+                        setSelectedPlan(item);
+                      }}
+                    >
+                      {/* Explicitly styled View Plan button div to bypass global transparent button overrides */}
+                      <div
+                        style={{ backgroundColor: "#ffffff", color: "#0B2545" }}
+                        className="font-sans font-semibold text-[13px] px-6 py-2.5 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-1.5 cursor-pointer z-30"
+                      >
+                        <span>View Plan</span>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
 
                   {/* Card Info Area */}
-                  <div className="p-6 flex flex-col gap-4 flex-grow justify-between">
-                    <div className="flex flex-col gap-2">
-                      <h3 className="font-sans text-[18px] sm:text-[20px] font-semibold text-[#0B2545]">
-                        {item.title}
-                      </h3>
-                      <p className="font-sans text-[13px] sm:text-[14px] font-light leading-[20px] sm:leading-[22px] text-[#525252]">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    <button
-                      onClick={() => alert(`Details for ${item.title}`)}
-                      className="w-full py-2.5 rounded-[12px] bg-[#0B2545] hover:bg-[#1a3a60] text-white font-sans text-[13px] font-medium leading-none transition-colors duration-200"
-                    >
-                      View Site Plan
-                    </button>
+                  <div className="p-6 sm:p-8 flex flex-col gap-3 flex-grow">
+                    <h3 className="font-serif text-[20px] sm:text-[22px] font-semibold text-[#2c578b]">
+                      {item.title}
+                    </h3>
+                    <p className="font-sans text-[13.5px] sm:text-[14px] font-light leading-[20px] sm:leading-[22px] text-[#525252] mb-2">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -181,19 +280,100 @@ export default function ProjectFloorPlans({
           <button
             onClick={handleNext}
             disabled={currentIndex === maxIndex}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-[#e5e5e5] bg-white flex items-center justify-center shadow-md active:scale-95 transition-all duration-200 ${
+            className={`absolute right-1 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center shadow-md active:scale-95 transition-all duration-200 ${
               currentIndex === maxIndex
-                ? "opacity-40 cursor-not-allowed text-gray-300"
-                : "opacity-100 hover:border-[#171717] text-[#171717]"
+                ? "opacity-30 cursor-not-allowed text-gray-300"
+                : "opacity-100 hover:border-gray-400 text-gray-700 hover:shadow-lg"
             }`}
             aria-label="Next slide"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="sm:w-5 sm:h-5"
+            >
               <path d="M9 18l6-6-6-6" />
             </svg>
           </button>
         </div>
       </div>
+
+      {/* Lightbox Modal for viewing image in large size */}
+      <AnimatePresence>
+        {selectedPlan && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPlan(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-6 md:p-8 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 30, stiffness: 350 }}
+              onClick={e => e.stopPropagation()}
+              className="relative max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl p-2 cursor-default flex flex-col"
+            >
+              {/* Close button inside modal */}
+              <button
+                onClick={() => setSelectedPlan(null)}
+                className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full !bg-black/60 hover:bg-black/85 text-white flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95"
+                aria-label="Close modal"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Large Image Container */}
+              <div className="relative w-full aspect-[4/3] max-h-[70vh] bg-[#fcfcfc] rounded-lg overflow-hidden">
+                <Image
+                  src={selectedPlan.image}
+                  alt={selectedPlan.title}
+                  fill
+                  className="object-contain p-2"
+                  sizes="100vw"
+                  priority
+                />
+              </div>
+
+              {/* Bottom Info bar */}
+              <div className="p-6 sm:p-8 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[#2c578b] font-sans text-[11px] font-semibold tracking-[2px] uppercase">
+                    {selectedPlan.floor} &bull; {selectedPlan.tag}
+                  </span>
+                  <h4 className="font-serif text-[22px] font-semibold text-[#0B2545]">
+                    {selectedPlan.title}
+                  </h4>
+                  <p className="font-sans text-[13.5px] font-light text-[#525252] mt-0.5">
+                    {selectedPlan.description}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedPlan(null)}
+                  className="px-6 py-3 rounded-full bg-[#0B2545] hover:bg-[#15345a] text-white text-[13px] font-sans font-medium transition-all shadow-sm active:scale-[0.98] whitespace-nowrap"
+                >
+                  Close View
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
