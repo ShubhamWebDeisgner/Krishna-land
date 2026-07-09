@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
   /* Fonts (provided via next/font in layout.js) */
-  --font-sans: var(--font-inter);
-  --font-serif: "Montserrat", sans-serif;
-  --font-display: var(--font-poppins);
+  --font-sans: var(--font-montserrat, "Montserrat"), "Montserrat", sans-serif;
+  --font-serif: var(--font-montserrat, "Montserrat"), "Montserrat", serif;
+  --font-display: var(--font-poppins, "Poppins"), "Poppins", sans-serif;
 
   /* Layout */
   --header-h: 70px;
 
   /* Brand Colors */
+  --color-primary: #2c578b;
+  --color-secondary: #0b2545;
   --color-ink-950: #0a0a0a;
   --color-ink-900: #171717;
   --color-ink-500: #737373;

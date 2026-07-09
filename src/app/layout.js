@@ -1,12 +1,12 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import FloatingSocialIcons from "@/components/ui/FloatingSocialIcons";
-import { Inter, Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -19,7 +19,7 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
       <body>
         <Header />
         <main className="page-main">{children}</main>

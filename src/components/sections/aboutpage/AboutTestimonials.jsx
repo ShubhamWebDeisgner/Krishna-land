@@ -1,8 +1,8 @@
 "use client";
 
-import Badge from "@/components/ui/Badge";
-import RatingStar from "@/components/sections/testimonals/RatingStar";
 import IconStarOutline from "@/components/sections/testimonals/IconStarOutline";
+import RatingStar from "@/components/sections/testimonals/RatingStar";
+import Badge from "@/components/ui/Badge";
 import { testimonialsData } from "@/data/testimonialsData";
 import { motion } from "framer-motion";
 
@@ -36,12 +36,12 @@ export default function AboutTestimonials() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 sm:gap-16">
         {/* Left-Aligned Heading */}
         <div className="flex flex-col gap-3">
-          <Badge icon={<IconStarOutline />} label="Customer Testimonials" />
+          <Badge icon={<IconStarOutline />} label="CHANNEL PARTNER RATING" />
           <h2
             id="testimonials-heading"
             className="font-serif text-[32px] sm:text-[38px] md:text-[44px] font-semibold text-[#2c578b] tracking-[-1px] leading-tight"
           >
-            Trusted by investors and homeowners alike.
+            Rated highly by our channel partners.
           </h2>
         </div>
 
@@ -53,7 +53,7 @@ export default function AboutTestimonials() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full"
         >
-          {testimonialsData.map((item) => (
+          {testimonialsData.map(item => (
             <motion.div
               key={item.id}
               variants={cardVariants}
@@ -76,7 +76,7 @@ export default function AboutTestimonials() {
               <div className="flex flex-col gap-3.5 mt-6 pt-4 border-t border-[#f5f5f5]">
                 {/* 5-Star Rating */}
                 <div className="flex gap-0.5">
-                  {[0, 1, 2, 3, 4].map((i) => (
+                  {[0, 1, 2, 3, 4].map(i => (
                     <RatingStar key={i} filled={true} />
                   ))}
                 </div>

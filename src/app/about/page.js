@@ -3,6 +3,7 @@ import WhoWeAre from "@/components/sections/aboutpage/WhoWeAre";
 import WhyChooseUs from "@/components/sections/aboutpage/WhyChooseUs";
 import VisionMission from "@/components/sections/aboutpage/VisionMission";
 import AboutTestimonials from "@/components/sections/aboutpage/AboutTestimonials";
+import TeamSection from "@/components/sections/aboutpage/TeamSection";
 
 export const metadata = {
   title: "About Us | Krishna Land Developers",
@@ -17,6 +18,7 @@ export default function AboutPage() {
       <WhoWeAre />
       <WhyChooseUs />
       <VisionMission />
+      <TeamSection />
       <AboutTestimonials />
     </div>
   );

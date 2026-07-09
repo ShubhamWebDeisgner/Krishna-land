@@ -164,20 +164,20 @@ export default function MobileMenu({ id, isOpen, links = [], onClose }) {
             <div className="w-full h-px bg-[#f0f0f0] my-3" />
 
             {/* CTA in mobile drawer */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.4 }}
               className="mt-2"
             >
               <Link
-                href="/contact"
+                href="#"
                 onClick={onClose}
-                className="flex items-center justify-center w-full font-sans text-[15px] font-medium !text-white bg-[#171717] hover:bg-[#2a2a2a] rounded-full px-6 py-3.5 transition-all duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] active:scale-[0.97]"
+                className="flex items-center justify-center w-full font-sans text-[15px] font-medium  bg-[#0B2545] hover:bg-[#2C578B] !text-white rounded-full px-6 py-3.5 transition-all duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] active:scale-[0.97]"
               >
                 Connect for query
               </Link>
-            </motion.div>
+            </motion.div> */}
 
             {/* Footer */}
             <motion.div

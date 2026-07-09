@@ -176,13 +176,13 @@
 // }
 "use client";
 
+import ContactQueryModal from "@/components/layout/ContactQueryModal";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import IconArrowRight from "./IconArrowRight";
 import IconSparkle from "./IconSparkle";
 import StatTile from "./StatTile";
 
-// const HERO_IMG = "/images/hero/landdevelopment.png";
 const HERO_IMG = "/main-bg.mp4";
 
 const containerVariants = {
@@ -222,144 +222,166 @@ const rightCardVariants = {
   },
 };
 
-/* ── Main ───────────────────────────────────────────────────────────────── */
 export default function HeroSection() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  useEffect(() => {
+    // Timed popup: auto-open after 15 seconds
+    const timer = setTimeout(() => {
+      const dismissed = sessionStorage.getItem("heroQueryModalDismissed");
+      if (!dismissed) {
+        setIsContactModalOpen(true);
+      }
+    }, 15000);
+    // Exit intent: detect mouse leaving the top of the window
+    const handleMouseLeave = e => {
+      if (e.clientY < 20) {
+        const dismissed = sessionStorage.getItem("heroQueryModalDismissed");
+        if (!dismissed) {
+          setIsContactModalOpen(true);
+          document.removeEventListener("mouseleave", handleMouseLeave);
+        }
+      }
+    };
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  const handleCloseModal = () => {
+    setIsContactModalOpen(false);
+    sessionStorage.setItem("heroQueryModalDismissed", "true");
+  };
+
   return (
-    <section
-      aria-label="Hero"
-      className="relative w-full min-h-[580px] lg:min-h-[640px] rounded-[24px] border border-[#e5e5e5] overflow-hidden bg-[#171717] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.10),0px_1px_2px_-1px_rgba(0,0,0,0.10)]"
-    >
-      {/* Background image */}
-      {/* <Image
-        src={HERO_IMG}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover select-none pointer-events-none"
-      /> */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
+    <>
+      <section
+        aria-label="Hero"
+        className="relative w-full min-h-[580px] lg:min-h-[640px] rounded-[24px] border border-[#e5e5e5] overflow-hidden bg-[#171717] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.10),0px_1px_2px_-1px_rgba(0,0,0,0.10)]"
       >
-        <source src={HERO_IMG} type="video/mp4" />
-      </video>
-
-      {/* Gradient overlay - lighter for better visibility */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(23,23,23,0.80) 0%, rgba(23,23,23,0.50) 30%, rgba(23,23,23,0.30) 60%, rgba(23,23,23,0.10) 100%)",
-        }}
-      />
-
-      {/* ── Content ───────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-8 p-6 sm:p-10 lg:p-12 min-h-[580px] lg:min-h-[640px] items-center justify-center">
-        {/* ─── Left Column: 7/12 ────────────────────────────────────────────── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="col-span-12 lg:col-span-7 w-full flex flex-col gap-5"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
         >
-          {/* Badge pill - hidden on very small screens */}
+          <source src={HERO_IMG} type="video/mp4" />
+        </video>
+
+        {/* Gradient overlay */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(11,37,69,0.75) 0%, rgba(23,23,23,0.60) 40%, rgba(23,23,23,0.30) 75%, rgba(23,23,23,0.15) 100%)",
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-8 p-6 sm:p-10 lg:p-12 min-h-[580px] lg:min-h-[640px] items-center justify-center">
+          {/* Left Column: 7/12 */}
           <motion.div
-            variants={itemVariants}
-            className="hidden xs:inline-flex items-center gap-2.5 self-start rounded-full border border-white/15 bg-white/5 backdrop-blur-[8px] px-[17px] py-[9px] hover:bg-white/10 transition-all duration-300 cursor-default"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="col-span-12 lg:col-span-7 w-full flex flex-col gap-5"
           >
-            <IconSparkle />
-            <span className="font-sans text-[12px] sm:text-[13px] font-medium leading-[20px] text-[#fafafa] tracking-[0.3px]">
-              Premium land development
-              <span className="opacity-30 mx-1.5">|</span>
-              Modern planning
-            </span>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-serif font-semibold text-[#fafafa] text-[clamp(28px,5.5vw,60px)] leading-[1.08] tracking-[-1.2px] sm:tracking-[-1.5px] max-w-[720px]"
-          >
-            Shaping elevated communities with
-            <span className="block text-white/90">vision, value, and lasting impact.</span>
-          </motion.h1>
-
-          {/* Sub text */}
-          <motion.p
-            variants={itemVariants}
-            className="font-sans text-[13px] sm:text-[16px] font-light sm:font-medium leading-[24px] sm:leading-[28px] text-white/70 max-w-[560px] tracking-[0.1px]"
-          >
-            Thoughtfully master-planned communities designed for modern living. Where premium
-            infrastructure meets investment confidence, transparency, and long-term value.
-          </motion.p>
-
-          {/* CTA buttons - stacked on mobile, side by side on desktop */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 flex-wrap mt-1"
-          >
-            <Link
-              href="#"
-              className="group inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-5 sm:px-7 rounded-full bg-white text-[#171717] font-sans text-[13px] sm:text-[14px] font-medium leading-none shadow-[0px_4px_12px_rgba(255,255,255,0.15)] hover:shadow-[0px_8px_24px_rgba(255,255,255,0.20)] hover:bg-[#f5f5f5] active:scale-[0.98] transition-all duration-200 whitespace-nowrap"
+            {/* Badge pill */}
+            <motion.div
+              variants={itemVariants}
+              className="hidden xs:inline-flex items-center gap-2.5 self-start rounded-full border border-white/15 bg-white/5 backdrop-blur-[8px] px-[17px] py-[9px] hover:bg-white/10 transition-all duration-300 cursor-default"
             >
-              Explore Communities
-              <IconArrowRight />
-            </Link>
-
-            <Link
-              href="#"
-              className="inline-flex items-center justify-center h-10 sm:h-11 px-5 sm:px-7 rounded-full border border-white/20 bg-white/5 !text-white font-sans text-[13px] sm:text-[14px] font-medium leading-none backdrop-blur-[4px] hover:bg-white/15 hover:border-white/30 transition-all duration-200 whitespace-nowrap"
-            >
-              View Properties
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* ─── Right Column: 5/12 — Glass Stat Card ────────────────────────── */}
-        <motion.div
-          variants={rightCardVariants}
-          initial="hidden"
-          animate="show"
-          className="hidden lg:block col-span-12 lg:col-span-5 w-full lg:flex justify-start lg:justify-end"
-        >
-          <div className="w-full max-w-[384px] rounded-[24px] bg-white/[0.06] border border-white/[0.08] backdrop-blur-2xl shadow-[0px_30px_60px_-16px_rgba(0,0,0,0.5)] p-8 flex flex-col gap-5 hover:bg-white/[0.08] transition-all duration-500">
-            {/* Card heading */}
-            <div className="flex flex-col gap-1.5">
-              <span className="font-sans text-[14px] font-medium leading-[16px] tracking-[4px] uppercase text-white/40">
-                Company Overview
+              <IconSparkle />
+              <span className="font-sans text-[12px] sm:text-[13px] font-medium leading-[20px] text-[#fafafa] tracking-[0.3px]">
+                Explore Dholera SIR
+                <span className="opacity-30 mx-1.5">|</span>
+                Premium Developments
               </span>
-              <h2 className="font-serif text-[24px] font-bold leading-[30px] text-[#fafafa] tracking-[-0.3px]">
-                A refined approach to
-                <br />
-                land development
-              </h2>
-            </div>
+            </motion.div>
 
-            {/* Stats + description */}
-            <div className="flex flex-col gap-3">
-              {/* 3 stat tiles */}
-              <div className="flex gap-2.5">
-                <StatTile value="18+" label="Years" />
-                <StatTile value="42" label="Projects" />
-                <StatTile value="1.2K" label="Acres" />
+            {/* Heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="font-display font-semibold text-[#fafafa] text-[clamp(32px,6vw,60px)] leading-[1.08] tracking-[-1.5px] max-w-[720px]"
+            >
+              Explore Dholera –
+              <span className="block text-white/90">The Future Investment Hub</span>
+            </motion.h1>
+
+            {/* Supporting Text */}
+            <motion.p
+              variants={itemVariants}
+              className="font-sans text-[13px] sm:text-[16px] font-light sm:font-medium leading-[24px] sm:leading-[28px] text-white/70 max-w-[560px] tracking-[0.1px]"
+            >
+              Partner with trusted growth, transparent deals, and secure land holdings. Join the
+              landmark smart city expansion designed for early investors.
+            </motion.p>
+
+            {/* CTA buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 flex-wrap mt-1"
+            >
+              <button
+                type="button"
+                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-5 sm:px-7 rounded-full !bg-white text-[#0B2545] !hover:text-[#0B2545] font-sans text-[13px] sm:text-[14px] font-medium leading-none shadow-[0px_4px_12px_rgba(255,255,255,0.15)] hover:shadow-[0px_8px_24px_rgba(44,87,139,0.25)] hover:bg-[#2C578B] active:scale-[0.98] transition-all duration-200 whitespace-nowrap cursor-pointer"
+              >
+                Be a Partner Today
+                <IconArrowRight />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsContactModalOpen(true)}
+                className="inline-flex items-center justify-center h-10 sm:h-11 px-5 sm:px-7 rounded-full border border-white/20 bg-white/5 !text-white font-sans text-[13px] sm:text-[14px] font-medium leading-none backdrop-blur-[4px] hover:bg-white/15 hover:border-white/30 transition-all duration-200 whitespace-nowrap cursor-pointer"
+              >
+                Book Site Visit
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: 5/12 — Glass Stat Card */}
+          <motion.div
+            variants={rightCardVariants}
+            initial="hidden"
+            animate="show"
+            className="hidden lg:block col-span-12 lg:col-span-5 w-full lg:flex justify-start lg:justify-end"
+          >
+            <div className="w-full max-w-[384px] rounded-[24px] bg-white/[0.06] border border-white/[0.08] backdrop-blur-2xl shadow-[0px_30px_60px_-16px_rgba(0,0,0,0.5)] p-8 flex flex-col gap-5 hover:bg-white/[0.08] transition-all duration-500">
+              <div className="flex flex-col gap-1.5">
+                <span className="font-sans text-[14px] font-medium leading-[16px] tracking-[4px] uppercase text-white/40">
+                  Investment Spotlight
+                </span>
+                <h2 className="font-serif text-[24px] font-bold leading-[30px] text-[#fafafa] tracking-[-0.3px]">
+                  India's Premier
+                  <br />
+                  Smart City Project
+                </h2>
               </div>
-              {/* Description */}
-              <div className="rounded-[16px] border border-white/5 bg-white/5 p-4 hover:bg-white/10 transition-all duration-300">
-                <p className="font-sans text-[13px] sm:text-[14px] font-light leading-[24px] text-white/60">
-                  From master planning to premium plot delivery, we create communities that balance
-                  architecture, infrastructure, and investment confidence.
-                </p>
+
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-2.5">
+                  <StatTile value="18+" label="Years" />
+                  <StatTile value="42" label="Projects" />
+                  <StatTile value="1.2K" label="Acres" />
+                </div>
+                <div className="rounded-[16px] border border-white/5 bg-white/5 p-4 hover:bg-white/10 transition-all duration-300">
+                  <p className="font-sans text-[13px] sm:text-[14px] font-light leading-[24px] text-white/60">
+                    With government-backed zoning, international airport planning, and DMIC access,
+                    Dholera SIR is the ultimate investment corridor.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+      </section>
+
+      <ContactQueryModal isOpen={isContactModalOpen} onClose={handleCloseModal} />
+    </>
   );
 }

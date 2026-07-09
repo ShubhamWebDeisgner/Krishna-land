@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
             id="testimonials-heading"
             className="font-serif text-[28px] sm:text-[32px] lg:text-[36px] font-semibold leading-[1.1] sm:leading-[40px] tracking-[-0.9px] text-[#2c578b] break-words"
           >
-            Trusted by investors and homeowners alike.
+            Rated highly by our channel partners.
           </h2>
         </div>
       </motion.div>

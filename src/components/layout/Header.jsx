@@ -7,19 +7,20 @@ import ContactQueryModal from "./ContactQueryModal";
 import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
   {
     label: "Projects",
     hasDropdown: true,
     dropdownItems: [
       { label: "Kasindra Projects", href: "/projects/kasindra" },
       { label: "Navagam Projects", href: "/projects/navagam" },
+      // { label: "All Projects", href: "/#projects" },
     ],
   },
-  { label: "About Us", href: "/about" },
-  { label: "Gallery", href: "#" },
-  { label: "Dholera", href: "#" },
-  { label: "Bulk Land", href: "#" },
-  { label: "Services", href: "#" },
+  { label: "Services", href: "/#services" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Careers", href: "/#careers" },
 ];
 
 function ChevronDown() {
@@ -194,13 +195,15 @@ export default function Header() {
                   onClick={() => setActiveLink(href)}
                   className={[
                     "group flex items-center gap-1",
-                    "font-sans text-[16px] font-medium",
+                    "font-sans text-[16px] font-medium relative py-1",
                     "transition-colors duration-200",
-                    isActive ? "text-[#171717]" : "text-[#525252] hover:text-[#171717]",
-                    "py-1",
+                    isActive ? "text-[#2C578B]" : "text-[#525252] hover:text-[#2C578B]",
                   ].join(" ")}
                 >
                   <span>{label}</span>
+                  <span
+                    className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[#2C578B] origin-left transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                  />
                 </Link>
               );
             })}
@@ -215,7 +218,7 @@ export default function Header() {
                 e.preventDefault();
                 setIsContactModalOpen(true);
               }}
-              className="hidden lg:inline-flex items-center justify-center font-sans text-[15px] font-medium bg-[#0B2545] hover:bg-[#2a2a2a] !text-white rounded-full px-5 py-2.5 transition-all duration-200 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
+              className="hidden lg:inline-flex items-center justify-center font-sans text-[15px] font-medium bg-[#0B2545] hover:bg-[#2C578B] !text-white rounded-full px-5 py-2.5 transition-all duration-200 hover:shadow-[0_4px_16px_rgba(44,87,139,0.2)] active:scale-[0.97] whitespace-nowrap"
             >
               Connect for Query
             </Link>
