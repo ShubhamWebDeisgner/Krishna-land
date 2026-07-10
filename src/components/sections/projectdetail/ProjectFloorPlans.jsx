@@ -362,12 +362,12 @@ export default function ProjectFloorPlans({
                     {selectedPlan.description}
                   </p>
                 </div>
-                <button
+                {/* <button
                   onClick={() => setSelectedPlan(null)}
-                  className="px-6 py-3 rounded-full bg-[#0B2545] hover:bg-[#15345a] text-white text-[13px] font-sans font-medium transition-all shadow-sm active:scale-[0.98] whitespace-nowrap"
+                  className="px-6 py-3 rounded-full !bg-[#0B2545] !hover:bg-[#15345a] !text-white text-[13px] font-sans font-medium transition-all shadow-sm active:scale-[0.98] whitespace-nowrap"
                 >
                   Close View
-                </button>
+                </button> */}
               </div>
             </motion.div>
           </motion.div>

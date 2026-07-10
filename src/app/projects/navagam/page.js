@@ -1,9 +1,10 @@
-import ProjectHero from "@/components/sections/projectdetail/ProjectHero";
-import ProjectOverview from "@/components/sections/projectdetail/ProjectOverview";
+import ProjectAdvantages from "@/components/sections/projectdetail/ProjectAdvantages";
 import ProjectAmenities from "@/components/sections/projectdetail/ProjectAmenities";
 import ProjectFloorPlans from "@/components/sections/projectdetail/ProjectFloorPlans";
 import ProjectGallery from "@/components/sections/projectdetail/ProjectGallery";
-import ProjectAdvantages from "@/components/sections/projectdetail/ProjectAdvantages";
+import ProjectHero from "@/components/sections/projectdetail/ProjectHero";
+import ProjectMap from "@/components/sections/projectdetail/ProjectMap";
+import ProjectOverview from "@/components/sections/projectdetail/ProjectOverview";
 
 export const metadata = {
   title: "Navagam Projects — Aurum Valley | Krishna Land Developers",
@@ -69,8 +70,14 @@ export default function NavagamPage() {
       />
 
       {/* 6. Location Advantages */}
-      <ProjectAdvantages
-        title="You're at the Centre of It All."
+      <ProjectAdvantages title="You're at the Centre of It All." />
+
+      {/* 7. Interactive Location Map */}
+      <ProjectMap
+        title="Aurum Valley Navagam Map"
+        locationName="Navagam Junction, Gujarat, India"
+        subtitle="Conveniently connected to Dholera Expressway and main transport junctions."
+        mapEmbedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16303.665728785141!2d72.26509420561315!3d22.355080351668633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f20891c861d17%3A0x61c0bffd087cc6fe!2sNavagam%2C%20Gujarat%20382465!5e0!3m2!1sen!2sin!4v1783673720661!5m2!1sen!2sin"
       />
     </div>
   );

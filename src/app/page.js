@@ -1,10 +1,10 @@
 import AboutSection from "@/components/sections/about/AboutSection";
-import HeroSection from "@/components/sections/home/HeroSection";
-import AboutDholeraSection from "@/components/sections/dholera/AboutDholeraSection";
-import ProjectsShowcaseSection from "@/components/sections/home/ProjectsShowcaseSection";
-import ServicesSection from "@/components/sections/services/ServicesSection";
 import BlogSection from "@/components/sections/blog/BlogSection";
 import CareersSection from "@/components/sections/careers/CareersSection";
+import AboutDholeraSection from "@/components/sections/dholera/AboutDholeraSection";
+import HeroSection from "@/components/sections/home/HeroSection";
+import ProjectsShowcaseSection from "@/components/sections/home/ProjectsShowcaseSection";
+import ServicesSection from "@/components/sections/services/ServicesSection";
 
 // Unused sections commented out according to client description (not removed from folder)
 // import OngoingProjectsSection from "@/components/sections/ongoing/OngoingProjectsSection";

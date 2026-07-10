@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plane, Landmark, LayoutGrid, Route } from "lucide-react";
+import { Landmark, LayoutGrid, Plane, Route } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -69,22 +69,26 @@ export default function AboutDholeraSection() {
     {
       icon: Route,
       title: "DMIC Corridor Connection",
-      description: "Strategically located along the Delhi-Mumbai Industrial Corridor, linking global trade markets.",
+      description:
+        "Strategically located along the Delhi-Mumbai Industrial Corridor, linking global trade markets.",
     },
     {
       icon: LayoutGrid,
       title: "World-Class Master Planning",
-      description: "Designed as a greenfield smart city with state-of-the-art utility routing and zoning.",
+      description:
+        "Designed as a greenfield smart city with state-of-the-art utility routing and zoning.",
     },
     {
       icon: Plane,
       title: "Upcoming International Airport",
-      description: "A major new international cargo & passenger airport underway to support future growth.",
+      description:
+        "A major new international cargo & passenger airport underway to support future growth.",
     },
     {
       icon: Landmark,
       title: "Strong Government Backing",
-      description: "Single-window clearance, high budget allocation, and fast-track administrative support.",
+      description:
+        "Single-window clearance, high budget allocation, and fast-track administrative support.",
     },
   ];
 
@@ -121,13 +125,16 @@ export default function AboutDholeraSection() {
                 id="dholera-heading"
                 className="font-display text-[32px] sm:text-[38px] lg:text-[42px] font-semibold leading-[1.15] text-white tracking-[-1px] max-w-xl"
               >
-                Explore Dholera SIR – <span className="text-[#2C578B] brightness-125">The Future Investment Hub</span>
+                Explore Dholera SIR –{" "}
+                <span className="text-[#2C578B] brightness-125">The Future Investment Hub</span>
               </motion.h2>
               <motion.p
                 variants={itemVariants}
                 className="font-sans text-[15px] sm:text-[16px] font-light leading-[26px] text-white/60 max-w-xl"
               >
-                Dholera Special Investment Region (SIR) is India's first planned greenfield smart city project. Designed to be twice the size of Mumbai, Dholera features unmatched infrastructure growth and unparalleled long-term investment yield.
+                Dholera Special Investment Region (SIR) is India's first planned greenfield smart
+                city project. Designed to be twice the size of Mumbai, Dholera features unmatched
+                infrastructure growth and unparalleled long-term investment yield.
               </motion.p>
             </div>
 
@@ -161,11 +168,23 @@ export default function AboutDholeraSection() {
             <motion.div variants={itemVariants} className="mt-4">
               <Link
                 href="/about"
-                className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-white text-[#0B2545] font-sans text-[14px] font-semibold hover:bg-[#2C578B] hover:text-white transition-all duration-300 shadow-sm"
+                className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-white text-[#0B2545] font-sans text-[14px] font-semibold hover:bg-[#2C578B] hover:!text-white transition-all duration-300 shadow-sm"
               >
                 Explore Now
-                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" className="translate-y-[0.5px]">
-                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  className="translate-y-[0.5px]"
+                >
+                  <path
+                    d="M6 12L10 8L6 4"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </Link>
             </motion.div>
@@ -189,8 +208,12 @@ export default function AboutDholeraSection() {
             {/* Visual Glassmorphic Tag */}
             <div className="absolute bottom-5 left-5 right-5 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex items-center justify-between">
               <div className="flex flex-col gap-0.5">
-                <p className="font-sans text-[10px] font-semibold uppercase tracking-[1.5px] text-white/40">Smart Infrastructure</p>
-                <p className="font-display text-[16px] font-semibold text-white">Phase 1 Activation Ready</p>
+                <p className="font-sans text-[10px] font-semibold uppercase tracking-[1.5px] text-white/40">
+                  Smart Infrastructure
+                </p>
+                <p className="font-display text-[16px] font-semibold text-white">
+                  Phase 1 Activation Ready
+                </p>
               </div>
               <div className="h-2 w-2 rounded-full bg-[#10B981] animate-pulse shrink-0 ml-2" />
             </div>

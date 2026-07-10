@@ -1,9 +1,8 @@
 "use client";
 
-import ContactQueryModal from "@/components/layout/ContactQueryModal";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: {},
@@ -27,9 +26,6 @@ const itemVariants = {
 };
 
 export default function CareersSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedJob, setSelectedJob] = useState("");
-
   const jobs = [
     {
       title: "Real Estate Sales Advisor",
@@ -53,12 +49,6 @@ export default function CareersSection() {
         "Establish relationships with channel partners, train them on Dholera infrastructure expansion, and coordinate client submissions.",
     },
   ];
-
-  const handleApply = jobTitle => {
-    setSelectedJob(jobTitle);
-    setIsModalOpen(true);
-  };
-
   return (
     <>
       <section id="careers" aria-labelledby="careers-heading" className="w-full">
@@ -117,20 +107,19 @@ export default function CareersSection() {
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  // onClick={() => handleApply(job.title)}
-                  className="inline-flex items-center justify-center h-10 px-5 rounded-full !bg-[#0B2545] !hover:bg-[#2C578B] !text-white font-sans text-[13px] font-medium transition-all duration-200 cursor-pointer self-start sm:self-center shrink-0"
-                >
-                  Apply Now
-                </button>
+                <Link href="/career">
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center h-10 px-5 rounded-full !bg-[#0B2545] !hover:bg-[#2C578B] !text-white font-sans text-[13px] font-medium transition-all duration-200 cursor-pointer self-start sm:self-center shrink-0"
+                  >
+                    Apply Now
+                  </button>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
-
-      <ContactQueryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

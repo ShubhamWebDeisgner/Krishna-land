@@ -178,6 +178,7 @@
 
 import ContactQueryModal from "@/components/layout/ContactQueryModal";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import IconArrowRight from "./IconArrowRight";
 import IconSparkle from "./IconSparkle";
@@ -326,13 +327,13 @@ export default function HeroSection() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 flex-wrap mt-1"
             >
-              <button
-                type="button"
-                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-5 sm:px-7 rounded-full !bg-white text-[#0B2545] !hover:text-[#0B2545] font-sans text-[13px] sm:text-[14px] font-medium leading-none shadow-[0px_4px_12px_rgba(255,255,255,0.15)] hover:shadow-[0px_8px_24px_rgba(44,87,139,0.25)] hover:bg-[#2C578B] active:scale-[0.98] transition-all duration-200 whitespace-nowrap cursor-pointer"
+              <Link
+                href="/channel-partner"
+                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-5 sm:px-7 rounded-full !bg-white text-[#0B2545] !hover:text-[#0B2545] font-sans text-[13px] sm:text-[14px] font-medium leading-none shadow-[0px_4px_12px_rgba(255,255,255,0.15)] hover:shadow-[0px_8px_24px_rgba(44,87,139,0.25)] hover:bg-[#2C578B] active:scale-[0.98] transition-all duration-200 whitespace-nowrap"
               >
                 Be a Partner Today
                 <IconArrowRight />
-              </button>
+              </Link>
 
               <button
                 type="button"

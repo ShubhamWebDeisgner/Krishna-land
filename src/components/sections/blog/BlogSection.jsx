@@ -74,10 +74,10 @@ export default function BlogSection() {
           </h2>
         </div>
         <Link
-          href="/about"
+          href="/blog"
           className="inline-flex items-center justify-center h-11 px-6 rounded-full border border-[#e5e5e5] bg-white text-[#0B2545] font-sans text-[13px] font-medium hover:border-[#2C578B] hover:text-[#2C578B] hover:shadow-sm transition-all duration-200 whitespace-nowrap md:self-end self-start"
         >
-          Explore Blog
+          View Blog
         </Link>
       </div>
 
@@ -90,7 +90,7 @@ export default function BlogSection() {
         className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full"
       >
         {blogs.map(post => (
-          <Link key={post.id} href="/about" className="group flex flex-col h-full">
+          <Link key={post.id} href={`/blog/${post.id}`} className="group flex flex-col h-full">
             <motion.div
               variants={cardVariants}
               className="flex flex-col h-full bg-white rounded-[24px] border border-[#e5e5e5] overflow-hidden hover:shadow-[0_15px_30px_rgba(11,37,69,0.06)] hover:-translate-y-1.5 transition-all duration-500"

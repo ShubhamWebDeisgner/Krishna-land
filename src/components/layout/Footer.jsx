@@ -59,7 +59,7 @@ function LinkedinIcon({ size = 16 }) {
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/projects" },
   { label: "Services", href: "/#services" },
   { label: "Blog", href: "/#blog" },
   { label: "FAQs", href: "/#faqs" },
@@ -69,7 +69,7 @@ const COMPANY_LINKS = [
   { label: "Dholera SIR", href: "/#dholera" },
   { label: "Partner With Us", href: "/#partner-with-us" },
   { label: "Contact Us", href: "/#contact-us" },
-  { label: "Careers", href: "/#careers" },
+  { label: "Careers", href: "/career" },
 ];
 
 const SOCIAL_LINKS = [

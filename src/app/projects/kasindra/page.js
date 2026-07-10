@@ -4,6 +4,7 @@ import ProjectAmenities from "@/components/sections/projectdetail/ProjectAmeniti
 import ProjectFloorPlans from "@/components/sections/projectdetail/ProjectFloorPlans";
 import ProjectGallery from "@/components/sections/projectdetail/ProjectGallery";
 import ProjectAdvantages from "@/components/sections/projectdetail/ProjectAdvantages";
+import ProjectMap from "@/components/sections/projectdetail/ProjectMap";
 
 export const metadata = {
   title: "Kasindra Projects — Aurum Valley | Krishna Land Developers",
@@ -67,6 +68,14 @@ export default function KasindraPage() {
       {/* 6. Location Advantages */}
       <ProjectAdvantages
         title="You're at the Centre of It All."
+      />
+
+      {/* 7. Interactive Location Map */}
+      <ProjectMap
+        title="Aurum Valley Kasindra Map"
+        locationName="Kasindra Growth Corridor, Gujarat, India"
+        subtitle="Close to key expressways and the cargo airport zone."
+        mapEmbedUrl="https://maps.google.com/maps?q=Kasindra,%20Gujarat,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
       />
     </div>
   );

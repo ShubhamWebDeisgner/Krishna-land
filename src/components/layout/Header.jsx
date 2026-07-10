@@ -9,18 +9,10 @@ import MobileMenu from "./MobileMenu";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  {
-    label: "Projects",
-    hasDropdown: true,
-    dropdownItems: [
-      { label: "Kasindra Projects", href: "/projects/kasindra" },
-      { label: "Navagam Projects", href: "/projects/navagam" },
-      // { label: "All Projects", href: "/#projects" },
-    ],
-  },
+  { label: "Projects", href: "/projects" },
   { label: "Services", href: "/#services" },
-  { label: "Blog", href: "/#blog" },
-  { label: "Careers", href: "/#careers" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/career" },
 ];
 
 function ChevronDown() {

@@ -53,7 +53,7 @@ export default function ProjectsShowcaseSection() {
           </h2>
         </div>
         <Link
-          href="/projects/kasindra"
+          href="/projects"
           className="inline-flex items-center justify-center h-11 px-6 rounded-full border border-[#e5e5e5] bg-white text-[#0B2545] font-sans text-[13px] font-medium hover:border-[#2C578B] hover:text-[#2C578B] hover:shadow-sm transition-all duration-200 whitespace-nowrap md:self-end self-start"
         >
           View All Projects

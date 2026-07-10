@@ -77,7 +77,7 @@ export default function AvailablePlotsSection() {
         </div>
 
         <Link
-          href="/projects/kasindra"
+          href="/projects"
           className="inline-flex items-center justify-center h-10 px-5 sm:px-6 rounded-full border border-[#e5e5e5] bg-white !text-[#0b2545] font-sans text-[13px] sm:text-[14px] font-medium hover:bg-[#f5f5f5] hover:border-[#d0d0d0] transition-all duration-200 whitespace-nowrap md:self-end self-start shrink-0"
         >
           Browse All Plots
