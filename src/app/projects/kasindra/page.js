@@ -1,10 +1,10 @@
-import ProjectHero from "@/components/sections/projectdetail/ProjectHero";
-import ProjectOverview from "@/components/sections/projectdetail/ProjectOverview";
+import ProjectAdvantages from "@/components/sections/projectdetail/ProjectAdvantages";
 import ProjectAmenities from "@/components/sections/projectdetail/ProjectAmenities";
 import ProjectFloorPlans from "@/components/sections/projectdetail/ProjectFloorPlans";
 import ProjectGallery from "@/components/sections/projectdetail/ProjectGallery";
-import ProjectAdvantages from "@/components/sections/projectdetail/ProjectAdvantages";
+import ProjectHero from "@/components/sections/projectdetail/ProjectHero";
 import ProjectMap from "@/components/sections/projectdetail/ProjectMap";
+import ProjectOverview from "@/components/sections/projectdetail/ProjectOverview";
 
 export const metadata = {
   title: "Kasindra Projects — Aurum Valley | Krishna Land Developers",
@@ -34,7 +34,7 @@ export default function KasindraPage() {
         title="Aurum Valley AT KASINDRA"
         subtitle="Legacy of Rome, Modernised Today."
         description="An ongoing master planned plotting and villa estate development by Krishna Land Developers, located in the rapidly growing Kasindra corridor. Integrating top-tier utilities and classical aesthetic planning to form a premium investment-grade community."
-        backgroundImage="/images/hero/hero-bg.png"
+        backgroundImage="/aum.png"
       />
 
       {/* 2. Overview Section */}
@@ -66,9 +66,7 @@ export default function KasindraPage() {
       />
 
       {/* 6. Location Advantages */}
-      <ProjectAdvantages
-        title="You're at the Centre of It All."
-      />
+      <ProjectAdvantages title="You're at the Centre of It All." />
 
       {/* 7. Interactive Location Map */}
       <ProjectMap

@@ -167,7 +167,7 @@ export default function AboutDholeraSection() {
             {/* CTA Button */}
             <motion.div variants={itemVariants} className="mt-4">
               <Link
-                href="/about"
+                href="/dholera"
                 className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-white text-[#0B2545] font-sans text-[14px] font-semibold hover:bg-[#2C578B] hover:!text-white transition-all duration-300 shadow-sm"
               >
                 Explore Now

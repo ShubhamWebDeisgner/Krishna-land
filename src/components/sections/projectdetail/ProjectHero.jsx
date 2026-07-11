@@ -29,7 +29,7 @@ export default function ProjectHero({
   title,
   subtitle,
   description,
-  backgroundImage = "/images/hero/hero-bg.png",
+  backgroundImage = "/sample-12.jpg",
   onBrochureClick,
   onLayoutClick,
 }) {

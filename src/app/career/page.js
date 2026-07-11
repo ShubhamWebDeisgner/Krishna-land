@@ -70,7 +70,6 @@ export default function CareerPage() {
         }));
         return;
       }
-
       setResume(file);
       setResumeName(file.name);
       setFormErrors(prev => ({ ...prev, resume: "" }));
@@ -89,7 +88,6 @@ export default function CareerPage() {
   const handleSubmit = e => {
     e.preventDefault();
     const errors = {};
-
     if (!formData.fullName.trim()) errors.fullName = "Full name is required";
     if (!formData.email.trim()) {
       errors.email = "Email address is required";
@@ -127,7 +125,7 @@ export default function CareerPage() {
       {/* ─── 10.3 TOP HERO BANNER ───────────────────────────────────────── */}
       <section className="relative w-full h-[320px] sm:h-[400px] flex items-center justify-center overflow-hidden">
         <Image
-          src="/about-bg.jpg"
+          src="/sample-12.jpeg"
           alt="Krishna Land Developers Careers Banner"
           fill
           priority

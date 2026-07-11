@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import ContactQueryModal from "./ContactQueryModal";
 import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
@@ -40,7 +39,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const navRef = useRef(null);
   const dropdownCloseTimer = useRef(null);
@@ -205,14 +203,10 @@ export default function Header() {
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             {/* Desktop CTA */}
             <Link
-              href="#"
-              onClick={e => {
-                e.preventDefault();
-                setIsContactModalOpen(true);
-              }}
+              href="/contact"
               className="hidden lg:inline-flex items-center justify-center font-sans text-[15px] font-medium bg-[#0B2545] hover:bg-[#2C578B] !text-white rounded-full px-5 py-2.5 transition-all duration-200 hover:shadow-[0_4px_16px_rgba(44,87,139,0.2)] active:scale-[0.97] whitespace-nowrap"
             >
-              Connect for Query
+              Contact Us
             </Link>
 
             {/* Hamburger — mobile only */}
@@ -245,7 +239,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <ContactQueryModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
       {/* Mobile slide-in menu */}
       <MobileMenu

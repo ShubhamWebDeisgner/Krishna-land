@@ -68,7 +68,7 @@ const QUICK_LINKS = [
 const COMPANY_LINKS = [
   { label: "Dholera SIR", href: "/#dholera" },
   { label: "Partner With Us", href: "/#partner-with-us" },
-  { label: "Contact Us", href: "/#contact-us" },
+  { label: "Contact Us", href: "/contact" },
   { label: "Careers", href: "/career" },
 ];
 

@@ -38,7 +38,7 @@ export default function NavagamPage() {
         title="Aurum Valley AT NAVAGAM"
         subtitle="Legacy of Rome, Modernised Today."
         description="A masterfully completed plotting and farmhouse development by Krishna Land Developers, situated in the fast-developing Navagam region. Combining classical architectural layout inspiration with premium utility systems to deliver a high-value, ready-for-possession residential asset."
-        backgroundImage="/images/hero/hero-bg.png"
+        backgroundImage="/sample-12.jpeg    "
       />
 
       {/* 2. Overview Section */}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const HERO_IMG = "/about-bg.jpg";
+const HERO_IMG = "/sample-12.jpeg";
 
 const bannerVariants = {
   hidden: { opacity: 0 },
