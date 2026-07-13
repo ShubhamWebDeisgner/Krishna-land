@@ -60,9 +60,9 @@ const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "/#blog" },
-  { label: "FAQs", href: "/#faqs" },
+  { label: "FAQs", href: "/faq" },
 ];
 
 const COMPANY_LINKS = [

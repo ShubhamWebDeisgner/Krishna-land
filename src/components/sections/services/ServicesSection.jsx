@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2, LineChart, Compass } from "lucide-react";
+import { Building2, Compass, LineChart } from "lucide-react";
 import Link from "next/link";
 
 const containerVariants = {
@@ -30,22 +30,29 @@ export default function ServicesSection() {
     {
       icon: Building2,
       title: "Property Consulting",
-      description: "Get personalized guidance on selecting the best plots, land zoning regulations, and future value mapping in Dholera SIR.",
+      description:
+        "Get personalized guidance on selecting the best plots, land zoning regulations, and future value mapping in Dholera SIR.",
     },
     {
       icon: LineChart,
       title: "Investment Advisory",
-      description: "Structured high-yield advice, ROI projections, and DMIC corridor zoning growth analysis for institutional & retail portfolios.",
+      description:
+        "Structured high-yield advice, ROI projections, and DMIC corridor zoning growth analysis for institutional & retail portfolios.",
     },
     {
       icon: Compass,
       title: "Site Visit Assistance",
-      description: "Complete hassle-free logistics support, chauffeured site visits, and physical layout demonstrations on-ground.",
+      description:
+        "Complete hassle-free logistics support, chauffeured site visits, and physical layout demonstrations on-ground.",
     },
   ];
 
   return (
-    <section id="services" aria-labelledby="services-heading" className="w-full flex flex-col gap-10">
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="w-full flex flex-col gap-10"
+    >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 w-full">
         <div className="flex flex-col gap-3">
@@ -62,7 +69,7 @@ export default function ServicesSection() {
           </h2>
         </div>
         <Link
-          href="/about"
+          href="/services"
           className="inline-flex items-center justify-center h-11 px-6 rounded-full border border-[#e5e5e5] bg-white text-[#0B2545] font-sans text-[13px] font-medium hover:border-[#2C578B] hover:text-[#2C578B] hover:shadow-sm transition-all duration-200 whitespace-nowrap md:self-end self-start"
         >
           Explore Services
