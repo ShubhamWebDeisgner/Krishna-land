@@ -25,6 +25,16 @@ const KASINDRA_STATS = [
   { value: "2026-27", label: "Possession Timeline" },
 ];
 
+const KASINDRA_GALLERY_IMAGES = {
+  curvedBlue: "/gallery.png",
+  skyscraper: "/image6.avif",
+  bedroom: "/gallery4.png",
+  tallVilla: "/image3.avif",
+  studyRoom: "/image1.avif",
+  poolHouse: "/image2.avif",
+  darkSkyscrapers: "/image4.avif",
+};
+
 export default function KasindraPage() {
   return (
     <div className="w-full flex flex-col">
@@ -61,8 +71,9 @@ export default function KasindraPage() {
 
       {/* 5. Legacy Gallery */}
       <ProjectGallery
-        title="Aurum Valley Legacy Gallery"
-        subtitle="A visual journey through Roman grandeur meets smart city living."
+        title="Aurum Valley Kasindra Gallery"
+        subtitle="Experience our active development corridor, smart plotting layouts, and premium residency plans."
+        images={KASINDRA_GALLERY_IMAGES}
       />
 
       {/* 6. Location Advantages */}

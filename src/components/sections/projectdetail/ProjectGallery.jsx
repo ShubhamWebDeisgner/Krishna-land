@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const defaultImages = {
   curvedBlue: "/gallery.png",
@@ -36,19 +37,21 @@ export default function ProjectGallery({
             </p>
           </div>
 
-          <button className="h-11 px-6 rounded-full !bg-[#0B2545] hover:bg-[#15345a] text-white font-sans text-[13.5px] font-medium transition-all duration-200 flex items-center justify-center gap-2 tracking-wide shadow-sm hover:shadow-md active:scale-[0.98] self-start sm:self-end shrink-0">
-            <span>View All Photos</span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
+          <Link href="/gallery">
+            <button className="h-11 px-6 rounded-full !bg-[#0B2545] hover:bg-[#15345a] text-white font-sans text-[13.5px] font-medium transition-all duration-200 flex items-center justify-center gap-2 tracking-wide shadow-sm hover:shadow-md active:scale-[0.98] self-start sm:self-end shrink-0">
+              <span>View All Photos</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </Link>
         </div>
 
         {/* Bento Grid Container */}

@@ -1,18 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { PhoneCall } from "lucide-react";
 import { useEffect, useState } from "react";
-import { BiLogoInstagram, BiLogoWhatsapp } from "react-icons/bi";
-import { IoAdd, IoClose } from "react-icons/io5";
-
-const INK = "#0b2545";
-const INK_DARK = "#0a0a0a";
-const LIGHT = "#fafafa";
+// import { FaWhatsapp } from "react-icons/fa";
+import { PiWhatsappLogo } from "react-icons/pi";
 
 export default function FloatingSocialIcons() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -26,7 +23,6 @@ export default function FloatingSocialIcons() {
         setIsVisible(true);
       } else {
         setIsVisible(false);
-        setIsOpen(false);
       }
     };
 
@@ -36,139 +32,92 @@ export default function FloatingSocialIcons() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMounted]);
 
-  const handleWhatsApp = () => window.open("https://wa.me/15550142024", "_blank");
-  const handleInstagram = () => window.open("https://instagram.com/krishnaland", "_blank");
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/919909099090", "_blank");
+  };
+
+  const handleCall = () => {
+    window.location.href = "tel:+919909099090";
+  };
 
   if (!isMounted) return null;
-
-  /* Shared pill style — guaranteed render via inline style */
-  const pillStyle = {
-    backgroundColor: INK,
-    color: LIGHT,
-    border: "1px solid rgba(255,255,255,0.12)",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-  };
-
-  const circleStyle = {
-    backgroundColor: INK,
-    border: "1px solid rgba(255,255,255,0.15)",
-    boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
-  };
 
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
-        >
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.6, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.6, y: 10 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="flex flex-col gap-3"
-              >
-                {/* WhatsApp */}
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  onClick={handleWhatsApp}
-                  style={pillStyle}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = INK_DARK)}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = INK)}
-                  className="flex items-center gap-3 rounded-full px-5 py-3.5
-                             transition-colors duration-300"
-                  aria-label="Chat on WhatsApp"
-                >
-                  <BiLogoWhatsapp size={20} style={{ color: LIGHT }} className="shrink-0" />
-                  <span
-                    className="font-sans text-[13px] font-medium whitespace-nowrap"
-                    style={{ color: LIGHT }}
-                  >
-                    Chat on WhatsApp
-                  </span>
-                </motion.button>
-
-                {/* Instagram */}
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  onClick={handleInstagram}
-                  style={pillStyle}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = INK_DARK)}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = INK)}
-                  className="flex items-center gap-3 rounded-full px-5 py-3.5
-                             transition-colors duration-300"
-                  aria-label="Follow on Instagram"
-                >
-                  <BiLogoInstagram size={20} style={{ color: LIGHT }} className="shrink-0" />
-                  <span
-                    className="font-sans text-[13px] font-medium whitespace-nowrap"
-                    style={{ color: LIGHT }}
-                  >
-                    Follow on Instagram
-                  </span>
-                </motion.button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Toggle button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(!isOpen)}
-            style={circleStyle}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = INK_DARK)}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = INK)}
-            className="relative flex items-center justify-center w-14 h-14
-                       rounded-full transition-colors duration-300"
-            aria-label={isOpen ? "Close social icons" : "Open social icons"}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3.5 items-end">
+          {/* 1. Floating Call Button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 15 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            className="flex items-center gap-3 relative group"
+            onMouseEnter={() => setHoveredButton("call")}
+            onMouseLeave={() => setHoveredButton(null)}
           >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+            {/* Slide-out Tooltip */}
+            <AnimatePresence>
+              {hoveredButton === "call" && (
+                <motion.span
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 10 }}
+                  className="!bg-[#0B2545] text-white text-[11px] font-sans font-semibold uppercase tracking-[1.5px] px-3.5 py-1.5 rounded-full shadow-md border border-white/10 whitespace-nowrap mr-1 hidden sm:inline-block pointer-events-none"
                 >
-                  <IoClose size={22} style={{ color: LIGHT }} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="open"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col items-center justify-center"
-                >
-                  <span
-                    className="font-sans text-[8px] font-medium tracking-[1.5px] uppercase leading-none"
-                    style={{ color: "rgba(250,250,250,0.6)" }}
-                  >
-                    Chat
-                  </span>
-                  <IoAdd size={22} style={{ color: LIGHT }} />
-                </motion.div>
+                  Call Us
+                </motion.span>
               )}
             </AnimatePresence>
 
-            {/* Pulse ring */}
-            <span
-              className="absolute inset-0 rounded-full animate-ping opacity-0"
-              style={{ border: "1px solid rgba(255,255,255,0.15)" }}
-            />
-          </motion.button>
-        </motion.div>
+            <button
+              type="button"
+              onClick={handleCall}
+              className="relative flex items-center justify-center w-13 h-13 rounded-full !bg-[#0B2545] text-white border border-white/15 shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:bg-[#15345a] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              aria-label="Direct Phone Call"
+            >
+              <PhoneCall size={19} className="stroke-[2.2] animate-pulse" />
+              {/* Pulse Ring */}
+              <span className="absolute inset-0 rounded-full animate-ping border border-white/10 opacity-30 pointer-events-none" />
+            </button>
+          </motion.div>
+
+          {/* 2. Floating WhatsApp Button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 15 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3 relative group"
+            onMouseEnter={() => setHoveredButton("whatsapp")}
+            onMouseLeave={() => setHoveredButton(null)}
+          >
+            {/* Slide-out Tooltip */}
+            <AnimatePresence>
+              {hoveredButton === "whatsapp" && (
+                <motion.span
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 10 }}
+                  className="bg-[#25D366] text-white text-[11px] font-sans font-semibold uppercase tracking-[1.5px] px-3.5 py-1.5 rounded-full shadow-md  whitespace-nowrap mr-1 hidden sm:inline-block pointer-events-none"
+                >
+                  WhatsApp Chat
+                </motion.span>
+              )}
+            </AnimatePresence>
+
+            <button
+              type="button"
+              onClick={handleWhatsApp}
+              className="relative flex items-center justify-center w-13 h-13 rounded-full !bg-[#25D366] text-white border border-[#20ba5a] shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              aria-label="Chat on WhatsApp"
+            >
+              <PiWhatsappLogo size={21} className="text-white" />
+              {/* Pulse Ring */}
+              <span className="absolute inset-0 rounded-full animate-ping border border-[#25D366] opacity-35 pointer-events-none" />
+            </button>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );

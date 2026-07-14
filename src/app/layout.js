@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import SitewideCta from "@/components/layout/SitewideCta";
 import FloatingSocialIcons from "@/components/ui/FloatingSocialIcons";
 import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main className="page-main">{children}</main>
+        <SitewideCta />
         <Footer />
         <FloatingSocialIcons />
       </body>

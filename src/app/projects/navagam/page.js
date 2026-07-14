@@ -25,10 +25,20 @@ const NAVAGAM_STATS = [
   { value: "Ready", label: "Possession Status" },
 ];
 
+const NAVAGAM_GALLERY_IMAGES = {
+  curvedBlue: "/gallery2.png",
+  skyscraper: "/gallery3.png",
+  bedroom: "/about-bg.jpg",
+  tallVilla: "/image5.avif",
+  studyRoom: "/image1.avif",
+  poolHouse: "/gallery.png",
+  darkSkyscrapers: "/gallery4.png",
+};
+
 export default function NavagamPage() {
-  const handleAction = () => {
-    // Action trigger for user interaction
-  };
+  // const handleAction = () => {
+  //   // Action trigger for user interaction
+  // };
 
   return (
     <div className="w-full flex flex-col">
@@ -38,7 +48,7 @@ export default function NavagamPage() {
         title="Aurum Valley AT NAVAGAM"
         subtitle="Legacy of Rome, Modernised Today."
         description="A masterfully completed plotting and farmhouse development by Krishna Land Developers, situated in the fast-developing Navagam region. Combining classical architectural layout inspiration with premium utility systems to deliver a high-value, ready-for-possession residential asset."
-        backgroundImage="/sample-12.jpeg    "
+        backgroundImage="/sample-12.jpeg"
       />
 
       {/* 2. Overview Section */}
@@ -65,8 +75,9 @@ export default function NavagamPage() {
 
       {/* 5. Legacy Gallery */}
       <ProjectGallery
-        title="Aurum Valley Legacy Gallery"
-        subtitle="A visual journey through Roman grandeur meets smart city living."
+        title="Aurum Valley Navagam Gallery"
+        subtitle="Explore completed gated communities, weekend farmhouse plots, and expressway transit alignments."
+        images={NAVAGAM_GALLERY_IMAGES}
       />
 
       {/* 6. Location Advantages */}

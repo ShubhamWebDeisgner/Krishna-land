@@ -1,21 +1,21 @@
 export const ongoingProjects = [
   {
     id: "dholeranavgam",
-    title: "Dholera Navgam",
+    title: "Navgam Project",
     location: "Dholera SIR",
     progress: 72,
     image: "/image1.avif",
   },
   {
     id: "dholerakasindra",
-    title: "Dholera Kasindra",
+    title: "Kasindra Projects",
     location: "Dholera SIR",
     progress: 58,
     image: "/image2.avif",
   },
   {
     id: "oak-valley",
-    title: "Oak Valley",
+    title: "Aum Valley",
     location: "South Ridge",
     progress: 81,
     image: "/image3.avif",

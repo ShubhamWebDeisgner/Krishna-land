@@ -15,7 +15,6 @@ export default function GalleryCta({ onInquiryClick }) {
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#2C578B]/5 rounded-full blur-[90px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-6 sm:gap-8">
-        
         {/* Badge */}
         <Badge
           icon={<MessageSquare size={12} className="text-[#2c578b]" />}
@@ -32,7 +31,8 @@ export default function GalleryCta({ onInquiryClick }) {
             How can we help you?
           </h2>
           <p className="font-sans text-[15px] sm:text-[16px] text-[#525252] font-light leading-[26px]">
-            Connect with our land investment relations desk to receive site layouts, clear-title mutations, or maps.
+            Connect with our land investment relations desk to receive site layouts, clear-title
+            mutations, or maps.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function GalleryCta({ onInquiryClick }) {
           <button
             type="button"
             onClick={onInquiryClick}
-            className="group inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-[#0B2545] hover:bg-[#2C578B] !text-white font-sans text-[13.5px] font-bold hover:shadow-md active:scale-[0.98] transition-all duration-300 cursor-pointer"
+            className="group inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full !bg-[#0B2545] hover:bg-[#2C578B] !text-white font-sans text-[13.5px] font-bold hover:shadow-md active:scale-[0.98] transition-all duration-300 cursor-pointer"
           >
             Inquiry Now
             <svg
@@ -69,7 +69,6 @@ export default function GalleryCta({ onInquiryClick }) {
             Contact Details
           </Link>
         </div>
-
       </div>
     </section>
   );
