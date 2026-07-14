@@ -31,12 +31,16 @@ export default function ProjectsShowcaseSection() {
   // Map our ongoing projects to the existing project detail pages
   const projectLinks = {
     "emerald-ridge": "/projects/kasindra",
-    "cedar-heights": "/projects/navagam",
+    "dholera-navgam": "/projects/navagam",
     "oak-valley": "/projects/kasindra",
   };
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="w-full flex flex-col gap-10">
+    <section
+      id="projects"
+      aria-labelledby="projects-heading"
+      className="w-full flex flex-col gap-10"
+    >
       {/* Header Row */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 w-full">
         <div className="flex flex-col gap-3">
@@ -68,7 +72,7 @@ export default function ProjectsShowcaseSection() {
         viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full"
       >
-        {ongoingProjects.map((project) => (
+        {ongoingProjects.map(project => (
           <Link
             key={project.id}
             href={projectLinks[project.id] || "/projects/kasindra"}
@@ -89,13 +93,25 @@ export default function ProjectsShowcaseSection() {
                   loading="lazy"
                   quality={85}
                 />
-                
+
                 {/* Visual Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <span className="text-white text-[13px] font-medium font-sans flex items-center gap-1.5">
                     View Project Details
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="translate-y-px">
-                      <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className="translate-y-px"
+                    >
+                      <path
+                        d="M6 12L10 8L6 4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -106,7 +122,7 @@ export default function ProjectsShowcaseSection() {
                 <h3 className="font-display text-[20px] sm:text-[22px] font-semibold leading-[1.2] text-[#0B2545] tracking-[-0.3px] group-hover:text-[#2C578B] transition-colors duration-200">
                   {project.title}
                 </h3>
-                
+
                 <div className="flex items-center gap-1.5 text-[#737373] text-[14px] font-light">
                   <MapPin size={14} className="text-[#2C578B]" />
                   <span>{project.location} / Dholera SIR</span>

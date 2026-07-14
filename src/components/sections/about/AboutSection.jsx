@@ -97,7 +97,7 @@ export default function AboutSection() {
                 className="font-display text-[32px] sm:text-[38px] lg:text-[42px] font-semibold
                            leading-[1.15] tracking-[-1px] text-[#2C578B]"
               >
-                Built on Trust. Guided by Legacy.
+                Building Tomorrow's Landmarks with Trust & Vision
               </h2>
 
               {/* Company Introduction */}
@@ -106,9 +106,11 @@ export default function AboutSection() {
                   Company Introduction
                 </h4>
                 <p className="font-sans text-[15px] font-light leading-[26px] text-[#525252] max-w-xl">
-                  Krishna Land Developers has been at the forefront of land planning and value
-                  creation. We acquire and develop premium land parcels, establishing high-growth
-                  investment portfolios and vibrant, infrastructure-ready locations.
+                  Krishna Land Developers is a trusted real estate developer specializing in premium
+                  land investments and thoughtfully planned projects in Dholera Smart City and other
+                  high-growth regions. Every project is carefully selected based on location
+                  potential, future infrastructure, and investment appreciation, ensuring our
+                  clients invest with confidence and peace of mind.
                 </p>
               </div>
 
@@ -118,9 +120,11 @@ export default function AboutSection() {
                   Legacy & Background
                 </h4>
                 <p className="font-sans text-[15px] font-light leading-[26px] text-[#525252] max-w-xl">
-                  Our journey is marked by transparent deals and strategic growth. Spanning over
-                  1,200 acres across 42 key projects, we have bridged investment confidence with
-                  master-planned delivery, helping thousands of clients build their legacy.
+                  Our success is built on integrity, transparency, and long-term relationships. With
+                  an expanding portfolio of strategically located developments, we have earned the
+                  trust of investors by consistently delivering legally verified projects,
+                  customer-focused service, and investment opportunities designed for sustainable
+                  wealth creation.
                 </p>
               </div>
             </div>

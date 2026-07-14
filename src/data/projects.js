@@ -1,15 +1,15 @@
 export const ongoingProjects = [
   {
-    id: "emerald-ridge",
-    title: "Emerald Ridge",
-    location: "North District",
+    id: "dholeranavgam",
+    title: "Dholera Navgam",
+    location: "Dholera SIR",
     progress: 72,
     image: "/image1.avif",
   },
   {
-    id: "cedar-heights",
-    title: "Cedar Heights",
-    location: "West Corridor",
+    id: "dholerakasindra",
+    title: "Dholera Kasindra",
+    location: "Dholera SIR",
     progress: 58,
     image: "/image2.avif",
   },

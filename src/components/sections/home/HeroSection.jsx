@@ -122,9 +122,9 @@ export default function HeroSection() {
             >
               <IconSparkle />
               <span className="font-sans text-[12px] sm:text-[13px] font-medium leading-[20px] text-[#fafafa] tracking-[0.3px]">
-                Explore Dholera SIR
+                Invest in Dholera's Future
                 <span className="opacity-30 mx-1.5">|</span>
-                Premium Developments
+                Own Tomorrow's Smart Address.
               </span>
             </motion.div>
 
@@ -142,8 +142,10 @@ export default function HeroSection() {
               variants={itemVariants}
               className="font-sans text-[13px] sm:text-[16px] font-light sm:font-medium leading-[24px] sm:leading-[28px] text-white/70 max-w-[560px] tracking-[0.1px]"
             >
-              Partner with trusted growth, transparent deals, and secure land holdings. Join the
-              landmark smart city expansion designed for early investors.
+              Explore premium plots and investment opportunities in Dholera Special Investment
+              Region (SIR)—India's first Greenfield Smart City. Backed by world-class
+              infrastructure, strategic connectivity, and long-term growth potential, it's your
+              opportunity to invest with confidence.
             </motion.p>
 
             {/* CTA buttons */}
